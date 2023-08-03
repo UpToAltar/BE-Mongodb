@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+    <form action="/user/create" method="POST">
+        <h2>Create User</h2>
+
+        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="email" placeholder="Email">
+        <input type="text" name="city" placeholder="City">
+        <button type="submit">Submit</button>
+    </form>
+    <div class="w3-container">
+        <h2>LIST USERS TABLE</h2>
+        
+    
+        <table class="w3-table-all">
+            <thead>
+                <tr class="w3-light-grey w3-hover-red">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (let i = 0; i < users.length; i++) { %>
+                    <tr>
+                        <td><%= users[i].id %></td>
+                        <td><%= users[i].name %></td>
+                        <td><%= users[i].email %></td>
+                        <td><%= users[i].city %></td>
+                        <td>
+                            <a href="/user/edit/<%= users[i].id %>">Edit</a>
+                            <a href="/user/delete/<%= users[i].id %>">Delete</a>
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
